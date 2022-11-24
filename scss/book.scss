@@ -1,0 +1,140 @@
+@import "vars";
+@import "mixins";
+
+body {
+  font-family: "Roboto", "Noto Sans KR", "돋움";
+  color: #111;
+  font-size: 16px;
+  background-color: #ccc;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.3) 1px,
+    0,
+    transparent 30px
+  );
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  vertical-align: top;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+#header {
+  height: 80px;
+  background-color: #fff;
+  font-size: 42px;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  .txt {
+    border: none;
+    width: 300px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 50px;
+  }
+  button {
+    height: 50px;
+    width: 50px;
+    border-radius: 0 50px 50px 0;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.result {
+  width: 1400px;
+  margin: 50px auto;
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -20px;
+    li {
+      width: calc(33.333% - 20px);
+      height: 170px;
+      box-sizing: border-box;
+      background-color: #fff;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      &:hover {
+        .bookInfo p {
+          text-decoration: underline;
+        }
+      }
+      a {
+        display: flex;
+        align-items: center;
+      }
+      img {
+        width: 100px;
+        height: 150px;
+        padding: 10px;
+        float: left;
+      }
+      .bookInfo {
+        // height: 150px;
+        width: calc(100% - 130px);
+        padding: 10px 10px 10px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .title {
+          @include ellipsis;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+        .author {
+          @include ellipsis;
+          font-size: 15px;
+          font-weight: 500;
+          margin-bottom: 30px;
+        }
+        p {
+          font-size: 15px;
+          color: #333;
+          line-height: 1.25;
+          @include multiElilipsis(3);
+        }
+      }
+    }
+  }
+}
+.cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: #f00;
+  border-radius: 100px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  span {
+    color: #fff;
+    text-transform: uppercase;
+  }
+}
